@@ -1,0 +1,13 @@
+services:
+  agente:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      LLM_PROVIDER: ${LLM_PROVIDER:-mock}
+      LLM_API_KEY: ${LLM_API_KEY:-}
+      LLM_BASE_URL: ${LLM_BASE_URL:-}
+      LLM_MODEL: ${LLM_MODEL:-}
+      PORT: "3000"
+    volumes:
+      - ./out:/app/out

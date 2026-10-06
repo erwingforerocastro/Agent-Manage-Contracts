@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="latin-1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Registro de Contratos Vigentes</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="cabecera">
+    <div>
+      <h1>Registro de Contratos Vigentes</h1>
+      <p class="subtitulo">Agente conversacional · buzón → maestro → alertas</p>
+    </div>
+    <div class="cabecera-der">
+      <label>Sesión <input id="sesion" type="text" spellcheck="false" /></label>
+      <label>Fecha de hoy <input id="hoy" type="date" /></label>
+      <span id="estado-adaptador" class="chip">…</span>
+    </div>
+  </header>
+
+  <main class="panel">
+    <section class="chat">
+      <div id="pendiente" class="pendiente" hidden></div>
+      <div id="mensajes" class="mensajes">
+        <div class="msg asistente">
+          <div class="contenido">
+            Puedo leer el buzón de contratos, extraer y validar cada documento, archivar los que
+            están limpios y generar el reporte de alertas.<br />
+            Prueba con: <em>Procesa el buzón de contratos con fecha de hoy 2026-09-03.</em>
+          </div>
+        </div>
+      </div>
+      <form id="formulario" class="entrada">
+        <textarea id="texto" rows="2" placeholder="Escribe tu mensaje… (Enter envía, Shift+Enter nueva línea)"></textarea>
+        <button type="submit" id="enviar">Enviar</button>
+      </form>
+    </section>
+
+    <aside class="lateral">
+      <nav class="pestanas">
+        <button class="pestana activa" data-vista="maestro">Maestro</button>
+        <button class="pestana" data-vista="alertas">Alertas</button>
+        <button class="pestana" data-vista="bitacora">Bitácora</button>
+        <button class="pestana" data-vista="herramientas">Herramientas</button>
+      </nav>
+      <div id="vista-maestro" class="vista activa"></div>
+      <div id="vista-alertas" class="vista"><pre class="markdown-claro">Aún no hay alertas. Procesa el buzón para generar <code>out/alertas.md</code>.</pre></div>
+      <div id="vista-bitacora" class="vista"><pre class="markdown-claro">Sin ejecuciones todavía.</pre></div>
+      <div id="vista-herramientas" class="vista"><pre class="markdown-claro">Sin llamadas a herramientas todavía.</pre></div>
+    </aside>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>
